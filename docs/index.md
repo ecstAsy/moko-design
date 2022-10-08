@@ -1,9 +1,9 @@
 ---
 layout: home
-title: moko-disign
-editLink: true
+editLink: false
 
-titleTemplate: A Vue3 UI Framework
+title: Web Vue
+titleTemplate: A Vue 3 UI Framework
 
 hero:
   name: Moko Design
@@ -14,7 +14,7 @@ hero:
       link: /zh-CN/guide/installation
     - theme: alt
       text: GitHub
-      link: https://github.com/wei-design/web-vue
+      link: https://github.com/ecstAsy/moko-design
 
 features:
   - title: 📦 Vite
