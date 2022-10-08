@@ -1,7 +1,7 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-02 14:02:11
- * @LastEditTime: 2022-10-08 10:05:41
+ * @LastEditTime: 2022-10-08 18:09:17
  * @LastEditors: ecstAsy
 -->
 
@@ -9,5 +9,6 @@
   <span>按钮</span>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="MokoButton">
+  
 </script>

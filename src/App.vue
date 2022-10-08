@@ -9,7 +9,7 @@
       <img src="/logo.svg" class="logo" alt="Vite logo" />
     </a>
   </div>
-  <m-button/>
+  <moko-button/>
 </template>
 
 <style scoped>
