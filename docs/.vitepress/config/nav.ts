@@ -1,7 +1,7 @@
 /*
  * @Author: ecstAsy
  * @Date: 2022-10-09 15:11:39
- * @LastEditTime: 2022-10-09 15:20:00
+ * @LastEditTime: 2022-10-09 17:45:36
  * @LastEditors: ecstAsy
  */
 
@@ -19,8 +19,8 @@ function getNav() {
 const dropDown = [{
   text: '更多',
   items: [
-      { text: 'GitHub', link: `https://github.com/ecstAsy/moko-design`, icon: 'github'},
-      { text: 'Gitee', link: 'https://forguo.cn', icon: 'gitee' },
+      { text: 'GitHub', link: 'https://github.com/ecstAsy/moko-design', icon: 'github'},
+      { text: 'Gitee', link: 'https://gitee.com/ecst/moko-design', icon: 'gitee' },
   ]
 }];
 
