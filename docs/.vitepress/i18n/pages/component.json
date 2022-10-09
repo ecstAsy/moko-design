@@ -1,0 +1,22 @@
+{
+  "zh-CN": {
+      "basic": {
+          "text": "基础组件",
+          "items": [
+              {
+                  "link": "/button",
+                  "text": "Button"
+              }
+          ]
+      },
+      "layout": {
+          "text": "布局",
+          "items": [
+              {
+                  "link": "/layout",
+                  "text": "Layout"
+              }
+          ]
+      }
+  }
+}

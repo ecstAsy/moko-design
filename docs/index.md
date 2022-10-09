@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 快速上手 →
-      link: /guide/
+      link: /zh-CN/guide/installation
     - theme: alt
       text: Github
       link: https://github.com/ecstAsy/moko-design
