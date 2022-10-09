@@ -2,18 +2,19 @@
 layout: home
 editLink: false
 
-title: Web Vue
-titleTemplate: A Vue 3 UI Framework
+title: Moko Design
+titleTemplate: A Vue3 Components !
 
 hero:
   name: Moko Design
-  tagline: Vue3 Moko UI Framework
+  text: A Vue3 Components
+  image: /logo.svg
   actions:
     - theme: brand
       text: 快速上手 →
-      link: /zh-CN/guide/installation
+      link: /guide/
     - theme: alt
-      text: GitHub
+      text: Github
       link: https://github.com/ecstAsy/moko-design
 
 features:
@@ -23,4 +24,7 @@ features:
     details: Vue3 + TypeScript组件
   - title: 📃 Vitepress
     details: Vitepress搭建文档库
+
+footer:
+  text: MIT Licensed | Copyright © 2019-present Evan You
 ---

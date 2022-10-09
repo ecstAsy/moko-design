@@ -1,5 +1,5 @@
 {
-  "name": "@moko-design/library",
+  "name": "docs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,6 +12,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "vitepress": "1.0.0-alpha.18"
+    "vitepress": "1.0.0-alpha.19"
   }
 }
