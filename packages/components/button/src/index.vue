@@ -1,7 +1,7 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-02 14:02:11
- * @LastEditTime: 2022-10-09 18:00:25
+ * @LastEditTime: 2022-10-10 11:44:49
  * @LastEditors: ecstAsy
 -->
 
@@ -38,7 +38,7 @@ const Props = {
 }
 
 export default defineComponent({
-  name: 'MokoButton',
+  name: 'MoButton',
   props: Props,
   setup(props) {
       const classString = classNames([

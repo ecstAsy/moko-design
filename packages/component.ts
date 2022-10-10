@@ -1,16 +1,13 @@
 /*
  * @Author: ecstAsy
  * @Date: 2022-10-02 14:01:05
- * @LastEditTime: 2022-10-09 15:48:07
+ * @LastEditTime: 2022-10-10 13:07:40
  * @LastEditors: ecstAsy
  */
 
-import MButton from './components/button';
+import MoButton from "./components/button";
+import MoIcon from "./components/icon";
 
-export default [
-  MButton
-]
+export default [MoButton, MoIcon];
 
-export {
-  MButton
-}
+export { MoButton, MoIcon };

@@ -1,17 +1,16 @@
 /*
  * @Author: ecstAsy
  * @Date: 2022-10-02 14:01:37
- * @LastEditTime: 2022-10-08 18:10:01
+ * @LastEditTime: 2022-10-10 13:20:26
  * @LastEditors: ecstAsy
  */
 
-import { App } from 'vue';
-import MButton from './src/index.vue';
-console.log(MButton.name);
+import { App } from "vue";
+import MoButton from "./src/index.vue";
 
-MButton.install = function (app: App) {
-  app.component('MokoButton', MButton)
-  return app
-}
+MoButton.install = function (app: App) {
+  app.component(MoButton.name, MoButton);
+  return app;
+};
 
-export default MButton
+export default MoButton;

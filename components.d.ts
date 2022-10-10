@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ElIcon: typeof import('element-plus/es')['ElIcon']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
   }
 }

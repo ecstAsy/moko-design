@@ -8,9 +8,11 @@
     <a href="/">
       <img src="/logo.svg" class="logo" alt="Moko logo" />
     </a>
+    
   </div>
 
-  <moko-button>按钮</moko-button>
+  <mo-button>按钮</mo-button>
+  <mo-icon icon="User" />
 </template>
 
 <style scoped>
