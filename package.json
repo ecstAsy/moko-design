@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.0.10",
+    "element-plus": "^2.2.17",
     "vue": "^3.2.37"
   },
   "devDependencies": {
@@ -16,12 +18,15 @@
     "@vitejs/plugin-vue": "^3.1.0",
     "eslint": "^8.0.1",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
     "eslint-import-resolver-typescript": "^3.5.1",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-vue": "^9.6.0",
+    "prettier": "^2.7.1",
     "sass": "^1.55.0",
     "typescript": "*",
     "unplugin-auto-import": "^0.11.2",
