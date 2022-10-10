@@ -5,12 +5,12 @@
 
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/logo.svg" class="logo" alt="Vite logo" />
+    <a href="/">
+      <img src="/logo.svg" class="logo" alt="Moko logo" />
     </a>
   </div>
 
-  <moko-button />
+  <moko-button>按钮</moko-button>
 </template>
 
 <style scoped>

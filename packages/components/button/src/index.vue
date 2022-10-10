@@ -1,14 +1,55 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-02 14:02:11
- * @LastEditTime: 2022-10-09 13:17:23
+ * @LastEditTime: 2022-10-09 18:00:25
  * @LastEditors: ecstAsy
 -->
 
 <template>
-  <span>按钮</span>
+  <button :class="[classString]" :disabled="disabled || loading">
+      <span class="we-button-inner">
+          <slot></slot>
+      </span>
+  </button>
 </template>
 
-<script setup lang="ts" name="MokoButton">
-  //test
+<script lang="ts">
+import { defineComponent, PropType } from 'vue'
+import classNames from '../../../utils/className'
+import './index.scss'
+
+const Props = {
+  type: {
+      type: String as PropType<string>, // 转为ts类型string
+      default: 'default'
+  },
+  size: {
+      type: String as PropType<string>,
+      default: 'md'
+  },
+  disabled: {
+      type: Boolean as PropType<boolean>,
+      default: false
+  },
+  loading: {
+      type: Boolean as PropType<boolean>,
+      default: false
+  }
+}
+
+export default defineComponent({
+  name: 'MokoButton',
+  props: Props,
+  setup(props) {
+      const classString = classNames([
+          'we-button',
+          `we-button-type-${props.type}`,
+          props.disabled ? 'we-button-disabled' : ''
+      ])
+      return {
+          classString
+      }
+  }
+})
 </script>
+

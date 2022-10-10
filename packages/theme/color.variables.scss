@@ -1,27 +1,53 @@
 /*
  * @Author: ecstAsy
  * @Date: 2022-10-08 14:41:04
- * @LastEditTime: 2022-10-08 14:48:36
+ * @LastEditTime: 2022-10-09 18:02:12
  * @LastEditors: ecstAsy
  */
 
-$primary-color: #7367F0;
-$success-color: #67c23a;
-$danger-color: #f56c6c;
-$warning-color: #e6a23c;
-$info-color: #909399;
-$border-color: #E2E7F4;
+// $primary-color: #7367F0;
+// $success-color: #67c23a;
+// $danger-color: #f56c6c;
+// $warning-color: #e6a23c;
+// $info-color: #909399;
+// $border-color: #E2E7F4;
+// $white: #ffffff;
+// $black: #000000;
+
+// :export {
+//   default: $primary-color;
+//   primary: $primary-color;
+//   success: $success-color;
+//   danger: $danger-color;
+//   warning: $warning-color;
+//   info: $info-color;
+//   border: $border-color;
+//   white: $white;
+//   black: $black;
+// }
+
+$primaryColor: #409EFF;
+$successColor: #67C23A;
+$warningColor: #E6A23C;
+$dangerColor: #F56C6C;
+$infoColor: #909399;
 $white: #ffffff;
 $black: #000000;
+$textBaseColor: #5f6266;
+$borderBaseColor: #dcdfe6;
+$delicateColor: #8e8e93;
 
 :export {
-  default: $primary-color;
-  primary: $primary-color;
-  success: $success-color;
-  danger: $danger-color;
-  warning: $warning-color;
-  info: $info-color;
-  border: $border-color;
+  default: $primaryColor;
+  primary: $white;
+  link: $primaryColor;
+  ghost: $primaryColor;
+  delicate: $delicateColor;
+  primaryColor: $primaryColor;
+  successColor: $successColor;
+  warningColor: $warningColor;
+  dangerColor: $dangerColor;
+  delicateColor: $delicateColor;
   white: $white;
   black: $black;
 }
