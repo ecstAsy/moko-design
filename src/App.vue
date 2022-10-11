@@ -12,10 +12,22 @@
       <mo-icon icon="User" />
     </el-col>
     <el-col>
-      <mo-table />
+      <!-- <mo-table /> -->
     </el-col>
+
+    <mo-dialog title="组件" v-model:visible="State.visible" />
   </el-row>
 </template>
+
+<script setup lang="ts">
+import { reactive } from "vue";
+
+const State = reactive<{
+  visible: boolean
+}>({
+  visible: true
+})
+</script>
 
 <style scoped>
 .logo {
