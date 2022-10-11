@@ -2,7 +2,11 @@
   <el-row>
     <el-col>
       <a href="/">
-        <img src="/logo.svg" class="logo" alt="Moko logo" />
+        <img
+          src="/logo.svg"
+          class="logo"
+          alt="Moko logo"
+        />
       </a>
     </el-col>
     <el-col>
@@ -15,18 +19,23 @@
       <!-- <mo-table /> -->
     </el-col>
 
-    <mo-dialog title="组件" v-model:visible="State.visible" />
+    <component-dialog v-bind="dialogProps" />
   </el-row>
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive } from 'vue';
+import ComponentDialog from './components/ComponentDialog.vue';
 
-const State = reactive<{
-  visible: boolean
-}>({
-  visible: true
-})
+interface dialogPropType {
+  visible: boolean;
+  name: string;
+}
+
+const dialogProps = reactive<dialogPropType>({
+  visible: true,
+  name: '',
+});
 </script>
 
 <style scoped>

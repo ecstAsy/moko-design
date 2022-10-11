@@ -1,7 +1,7 @@
 /*
  * @Author: ecstAsy
  * @Date: 2022-10-11 15:32:56
- * @LastEditTime: 2022-10-11 15:32:59
+ * @LastEditTime: 2022-10-11 16:04:02
  * @LastEditors: ecstAsy
  */
 
@@ -17,7 +17,7 @@ export interface MColumnItemType {
   key?: string;
   title?: string;
   dataIndex?: string;
-  align?: "left" | "center" | "right";
+  align?: 'left' | 'center' | 'right';
   scopedSlots?: ScopedSlots | any;
   fixed?: string;
   width?: number;
