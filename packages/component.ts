@@ -1,16 +1,18 @@
 /*
  * @Author: ecstAsy
  * @Date: 2022-10-02 14:01:05
- * @LastEditTime: 2022-10-10 14:35:05
+ * @LastEditTime: 2022-10-11 15:12:54
  * @LastEditors: ecstAsy
  */
 
 import MoButton from "./components/button";
-import MoIcon from "./components/icon";
-import MoSvg from "./components/svg";
+import MoTable from "./components/mo-table";
+import MoIcon from "./components/mo-icon";
+import MoSvg from "./components/mo-svg";
 
 export const components = {
   MoButton,
+  MoTable,
   MoIcon,
   MoSvg,
 };

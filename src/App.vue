@@ -1,18 +1,20 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-</script>
-
 <template>
-  <div>
-    <a href="/">
-      <img src="/logo.svg" class="logo" alt="Moko logo" />
-    </a>
-    
-  </div>
-
-  <mo-button>按钮</mo-button>
-  <mo-icon icon="User" />
+  <el-row>
+    <el-col>
+      <a href="/">
+        <img src="/logo.svg" class="logo" alt="Moko logo" />
+      </a>
+    </el-col>
+    <el-col>
+      <mo-button>按钮</mo-button>
+    </el-col>
+    <el-col>
+      <mo-icon icon="User" />
+    </el-col>
+    <el-col>
+      <mo-table />
+    </el-col>
+  </el-row>
 </template>
 
 <style scoped>
