@@ -1,46 +1,211 @@
 <template>
-  <el-row>
-    <el-col>
-      <a href="/">
-        <img src="/logo.svg" class="logo" alt="Moko logo" />
-      </a>
-    </el-col>
-    <el-col>
-      <mo-button>按钮</mo-button>
-    </el-col>
-    <el-col>
-      <mo-icon icon="User" />
-    </el-col>
-    <el-col>
-      <!-- <mo-table /> -->
-    </el-col>
-
-    <component-dialog v-bind="dialogProps" />
-  </el-row>
+  <div class="component-wrap">
+    <ul class="component-items">
+      <li
+        v-for="(item, index) in State.ComponentsArrayA"
+        :key="index"
+        @click="onClick(item)"
+      >
+        {{ item.name }}
+      </li>
+      <li class="mo-logo">
+        <a href="/">
+          <img src="/logo.svg" class="logo" alt="Moko logo" />
+        </a>
+      </li>
+      <li
+        v-for="(item, index) in State.ComponentsArrayB"
+        :key="index"
+        @click="onClick(item)"
+      >
+        {{ item.name }}
+      </li>
+    </ul>
+    <component-dialog v-bind="State.dialogProps" />
+  </div>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
 import ComponentDialog from './components/ComponentDialog.vue';
+import { ComponentItemType } from './type';
 
 interface dialogPropType {
   visible: boolean;
-  name: string;
+  title: string;
+  component?: string;
+  cancel: () => void;
 }
-
-const dialogProps = reactive<dialogPropType>({
-  visible: true,
-  name: '',
+const State = reactive<{
+  dialogProps: dialogPropType;
+  ComponentsArrayA: Array<ComponentItemType>;
+  ComponentsArrayB: Array<ComponentItemType>;
+}>({
+  dialogProps: {
+    visible: false,
+    component: undefined,
+    title: '',
+    cancel: () => {
+      State.dialogProps = {
+        ...State.dialogProps,
+        visible: false,
+        component: undefined,
+        title: '',
+      };
+    },
+  },
+  ComponentsArrayA: [
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: 'Icon',
+      component: 'mo-icon',
+    },
+    {
+      name: 'Svg',
+      component: 'mo-svg',
+    },
+    {
+      name: '表格',
+      component: 'mo-table',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+  ],
+  ComponentsArrayB: [
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+    {
+      name: '按钮',
+      component: 'mo-button',
+    },
+  ],
 });
+
+const onClick = ({ component, name }: ComponentItemType) => {
+  State.dialogProps = {
+    ...State.dialogProps,
+    visible: true,
+    component,
+    title: name,
+  };
+};
 </script>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+<style lang="scss" scoped>
+.component-wrap {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .component-items {
+    margin: 16px;
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(5, 20%);
+
+    li {
+      width: 8rem;
+      height: 8rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 1px 1px 8px 1px #64c6eeaa;
+      border-radius: 16px;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 1px 1px 8px 1px #3592fbaa;
+        transform: scale(1.05);
+      }
+
+      &.mo-logo {
+        .logo {
+          width: 100%;
+          height: 100%;
+
+          &:hover {
+            filter: drop-shadow(0 0 2em #646cffaa);
+          }
+        }
+      }
+    }
+  }
 }
 </style>

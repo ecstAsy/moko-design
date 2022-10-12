@@ -1,25 +1,26 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-11 15:54:56
- * @LastEditTime: 2022-10-11 16:10:34
+ * @LastEditTime: 2022-10-12 17:05:42
  * @LastEditors: ecstAsy
 -->
 
 <template>
-  <mo-dialog
-    title="组件"
-    v-model:visible="visible"
-  >
-    <div>ddd</div>
+  <mo-dialog :title="props.title" v-model:visible="visible" @cancel="props.cancel" :showFooter="false">
+    <component :is="getComIs()" icon="user" />
   </mo-dialog>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed } from 'vue';
+import { ComponentItemType } from '../type';
+import { mobutton } from './demos';
 
 interface Props {
-  visible: boolean
-  name: string
+  visible: boolean;
+  title: string;
+  component?: string;
+  cancel: () => void;
 }
 
 const props = defineProps<Props>();
@@ -33,5 +34,14 @@ const emit = defineEmits<Emits>();
 const visible = computed({
   get: () => props.visible,
   set: (val) => emit('update:visible', val),
+});
+
+const getComIs = computed(() => {
+  const ComMaps: {
+    [prop: string]: any;
+  } = {
+    'mo-button': mobutton,
+  };
+  return () => ComMaps[props.component!];
 });
 </script>
