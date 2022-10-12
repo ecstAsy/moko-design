@@ -2,11 +2,7 @@
   <el-row>
     <el-col>
       <a href="/">
-        <img
-          src="/logo.svg"
-          class="logo"
-          alt="Moko logo"
-        />
+        <img src="/logo.svg" class="logo" alt="Moko logo" />
       </a>
     </el-col>
     <el-col>
