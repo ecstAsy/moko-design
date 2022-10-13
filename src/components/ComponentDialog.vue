@@ -1,12 +1,17 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-11 15:54:56
- * @LastEditTime: 2022-10-12 17:05:42
+ * @LastEditTime: 2022-10-13 09:31:43
  * @LastEditors: ecstAsy
 -->
 
 <template>
-  <mo-dialog :title="props.title" v-model:visible="visible" @cancel="props.cancel" :showFooter="false">
+  <mo-dialog
+    :title="props.title"
+    v-model:visible="visible"
+    @cancel="props.cancel"
+    :showFooter="false"
+  >
     <component :is="getComIs()" icon="user" />
   </mo-dialog>
 </template>
