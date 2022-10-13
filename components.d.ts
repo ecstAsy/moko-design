@@ -12,11 +12,13 @@ declare module '@vue/runtime-core' {
     ElCol: typeof import('element-plus/es')['ElCol']
     ElDialog: typeof import('element-plus/es')['ElDialog']
     ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElPagination: typeof import('element-plus/es')['ElPagination']
     ElRow: typeof import('element-plus/es')['ElRow']
     ElTable: typeof import('element-plus/es')['ElTable']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     MoButton: typeof import('./src/components/demos/mo-button.vue')['default']
     MoIcon: typeof import('./src/components/demos/mo-icon.vue')['default']
+    MoTable: typeof import('./src/components/demos/mo-table.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
