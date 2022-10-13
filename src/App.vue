@@ -72,8 +72,8 @@ const State = reactive<{
       component: 'mo-table',
     },
     {
-      name: '按钮',
-      component: 'mo-button',
+      name: '弹窗',
+      component: '',
     },
     {
       name: '按钮',

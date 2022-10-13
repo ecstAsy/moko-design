@@ -1,28 +1,28 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-11 15:35:07
- * @LastEditTime: 2022-10-12 14:20:55
+ * @LastEditTime: 2022-10-13 15:44:29
  * @LastEditors: ecstAsy
 -->
 
 <template>
   <el-dialog
     v-model="dialogVisible"
-    :close-on-click-modal="false"
-    :close-on-press-escape="false"
-    :destroy-on-close="props.destroyOnClose"
     :title="props.title"
     :width="props.width"
+    :close-on-click-modal="props.closeOnClickModal"
+    :close-on-press-escape="props.closeOnPressEscape"
+    :destroy-on-close="props.destroyOnClose"
     :append-to-body="props.appendToBody"
     @closed="emit('closed')"
     @close="emit('cancel')"
     @open="emit('open')"
   >
-    <template v-if="!props.header" #header>
+    <template v-if="props.headerOptions.custom" #header>
       <div
         class="moko-dialog-header"
         :style="{
-          justifyContent: props.headerAlign,
+          justifyContent: props.headerOptions.align,
         }"
       >
         <span>
@@ -55,32 +55,38 @@
 
 <script setup lang="ts" name="MoDialog">
 import { computed } from 'vue';
+import { MheaderOptionsType } from './type';
 
-interface Props {
+export interface Props {
   visible: boolean;
   loading?: boolean;
   title: string;
-  header?: boolean;
-  headerAlign?: string;
   width?: string | number;
+  closeOnClickModal?: boolean;
+  closeOnPressEscape?: boolean;
+  destroyOnClose?: boolean;
   appendToBody?: boolean;
+  headerOptions?: MheaderOptionsType;
+  showFooter?: boolean;
   confirmText?: string;
   cancelText?: string;
-  destroyOnClose?: boolean;
-  showFooter?: boolean;
 }
 const props = withDefaults(defineProps<Props>(), {
   visible: false,
   loading: false,
   title: '名称',
-  header: true,
-  headerAlign: 'flex-start',
-  appendToBody: false,
   width: '700px',
+  closeOnClickModal: false,
+  closeOnPressEscape: false,
+  destroyOnClose: false,
+  appendToBody: false,
+  headerOptions: () => ({
+    custom: false,
+    align: 'left',
+  }),
+  showFooter: true,
   confirmText: '确认',
   cancelText: '取消',
-  destroyOnClose: false,
-  showFooter: true,
 });
 interface Emits {
   (e: 'open'): void;
