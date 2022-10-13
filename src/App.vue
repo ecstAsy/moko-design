@@ -189,10 +189,12 @@ const onClick = ({ component, name }: ComponentItemType) => {
       box-shadow: 1px 1px 8px 1px #64c6eeaa;
       border-radius: 16px;
       cursor: pointer;
+      color: #64c6eeaa;
 
       &:hover {
         box-shadow: 1px 1px 8px 1px #3592fbaa;
         transform: scale(1.05);
+        color: #3592fbaa;
       }
 
       &.mo-logo {

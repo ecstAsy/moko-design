@@ -1,7 +1,7 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-11 15:54:56
- * @LastEditTime: 2022-10-13 09:31:43
+ * @LastEditTime: 2022-10-13 14:53:23
  * @LastEditors: ecstAsy
 -->
 
@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { ComponentItemType } from '../type';
-import { mobutton } from './demos';
+import { mobutton, moicon } from './demos';
 
 interface Props {
   visible: boolean;
@@ -46,6 +46,7 @@ const getComIs = computed(() => {
     [prop: string]: any;
   } = {
     'mo-button': mobutton,
+    'mo-icon': moicon,
   };
   return () => ComMaps[props.component!];
 });
