@@ -15,6 +15,7 @@ declare module '@vue/runtime-core' {
     ElPagination: typeof import('element-plus/es')['ElPagination']
     ElRow: typeof import('element-plus/es')['ElRow']
     ElTable: typeof import('element-plus/es')['ElTable']
+    ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     MoButton: typeof import('./src/components/demos/mo-button.vue')['default']
     MoIcon: typeof import('./src/components/demos/mo-icon.vue')['default']

@@ -5,6 +5,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.0.0
   '@typescript-eslint/parser': ^5.39.0
   '@vitejs/plugin-vue': ^3.1.0
+  ecstasy-tools: ^1.0.3
   element-plus: ^2.2.17
   eslint: ^8.0.1
   eslint-config-airbnb-base: ^15.0.0
@@ -30,6 +31,7 @@ specifiers:
 
 dependencies:
   '@element-plus/icons-vue': 2.0.10_vue@3.2.40
+  ecstasy-tools: 1.0.3
   element-plus: 2.2.17_vue@3.2.40
   vue: 3.2.40
 
@@ -913,6 +915,10 @@ packages:
     dependencies:
       esutils: 2.0.3
     dev: true
+
+  /ecstasy-tools/1.0.3:
+    resolution: {integrity: sha512-0ECI4xoCp6EJn1cAJuFzBP8Ioe7wGpN0kWY+ZJp579jQ3nE+y/HOB1UMn5amUqcErmyezDMCQAvXiZ+jquSfiw==}
+    dev: false
 
   /element-plus/2.2.17_vue@3.2.40:
     resolution: {integrity: sha512-MGwMIE/q+FFD3kgS23x8HIe5043tmD1cTRwjhIX9o6fim1avFnUkrsfYRvybbz4CkyqSb185EheZS5AUPpXh2g==}
