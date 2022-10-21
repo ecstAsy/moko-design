@@ -1,7 +1,7 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-11 15:11:17
- * @LastEditTime: 2022-10-21 11:29:04
+ * @LastEditTime: 2022-10-21 13:34:49
  * @LastEditors: ecstAsy
 -->
 
@@ -14,11 +14,7 @@
         fit
         :data="props.lazyLoad ? State.dataSource : props.loadData"
         :show-summary="props.showSummary"
-        :class="
-          props.grayHeader
-            ? 'moko-table-content gray-header'
-            : 'moko-table-content'
-        "
+        :class="getTableClass()"
         :summary-method="getSummaries"
       >
         <template
@@ -35,6 +31,12 @@
             :sortable="column.sortable"
             :reserve-selection="column.reserveselection"
             :selectable="props.selectable"
+            :formatter="
+              getFormatter(
+                column.formatter || (props.formatter ? 'fields' : ''),
+                column
+              )
+            "
           >
             <template v-if="column.scopedSlots" #default="scope">
               <slot v-bind="scope" :name="column.scopedSlots.customRender" />
@@ -57,7 +59,7 @@
 </template>
 
 <script setup lang="ts" name="MoTable">
-import { reactive, onMounted } from 'vue';
+import { reactive, computed, onMounted } from 'vue';
 import type {
   TableColumnCtx,
   TableColumn,
@@ -83,6 +85,7 @@ interface Props {
   preload?: boolean;
   showSummary?: boolean;
   sumArry?: Array<string>;
+  formatter?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -97,6 +100,7 @@ const props = withDefaults(defineProps<Props>(), {
   preload: true,
   showSummary: false,
   sumArry: undefined,
+  formatter: true,
 });
 
 const State = reactive<MokoTableStateTypes>({
@@ -135,6 +139,8 @@ onMounted(() => {
   props.lazyLoad && props.preload && getData();
 });
 const onCurrentChange = (current: number) => getData(current);
+
+// 列表求和方法
 interface SummaryMethodProps<T = any> {
   columns: TableColumnCtx<T>[];
   data: T[];
@@ -188,7 +194,8 @@ const SelectFormatter = (
   row: TableColumn<MColumnItemType>,
   column: TableColumnCtx<any>,
   cellValue: any,
-  index: number
+  index: number,
+  record: MColumnItemType
 ) => {
   let formatterStr = '--';
   if (!Object.keys(row).includes(column.property)) {
@@ -196,6 +203,31 @@ const SelectFormatter = (
   }
   if (!cellValue) return formatterStr;
 };
+// 获取格式化类型
+const getFormatter = computed(() => (type: string, record: MColumnItemType) => {
+  const formatterMaps: {
+    [proppname: string]: any;
+  } = {
+    money: MoneyFormatter,
+    number: NumberFormatter,
+    fields: FieldsFormatter,
+    select: (
+      row: TableColumn<MColumnItemType>,
+      column: TableColumnCtx<any>,
+      cellValue: any,
+      index: number
+    ) => SelectFormatter(row, column, cellValue, index, record),
+  };
+  return formatterMaps[type];
+});
+// 获取组件class
+const getTableClass = computed(() => () => {
+  let classStr = 'moko-table-content';
+  if (props.grayHeader) {
+    classStr += ' gray-header';
+  }
+  return classStr;
+});
 </script>
 
 <style lang="scss" scoped>
