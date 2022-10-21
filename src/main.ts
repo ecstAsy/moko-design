@@ -3,6 +3,7 @@ import * as Icons from '@element-plus/icons-vue';
 import './style.css';
 import App from './App.vue';
 import MokoDesign from '../packages/index';
+import '@/assets/font';
 
 const app = createApp(App);
 
