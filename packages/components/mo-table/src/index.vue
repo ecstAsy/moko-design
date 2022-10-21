@@ -1,7 +1,7 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-11 15:11:17
- * @LastEditTime: 2022-10-21 10:12:02
+ * @LastEditTime: 2022-10-21 10:33:14
  * @LastEditors: ecstAsy
 -->
 
@@ -62,7 +62,7 @@ interface Props {
   size?: 'small' | 'default' | 'large';
   pagination?: boolean;
   columns: Array<MColumnItemType>;
-  selectable?: boolean;
+  selectable?: (row: any) => boolean;
   load?: (params?: any) => any;
   loadData?: Array<any>;
   lazyLoad?: boolean;
@@ -73,7 +73,7 @@ const props = withDefaults(defineProps<Props>(), {
   aroundBorder: false,
   size: 'default',
   pagination: true,
-  selectable: false,
+  selectable: (row: any) => true,
   load: () => null,
   loadData: () => [],
   lazyLoad: false,
