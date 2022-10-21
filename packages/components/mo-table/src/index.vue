@@ -1,7 +1,7 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-11 15:11:17
- * @LastEditTime: 2022-10-21 10:33:14
+ * @LastEditTime: 2022-10-21 11:07:59
  * @LastEditors: ecstAsy
 -->
 
@@ -13,6 +13,13 @@
         v-loading="State.loading"
         fit
         :data="props.lazyLoad ? State.dataSource : props.loadData"
+        :show-summary="props.showSummary"
+        :class="
+          props.grayHeader
+            ? 'moko-table-content gray-header'
+            : 'moko-table-content'
+        "
+        :summary-method="getSummaries"
       >
         <template
           v-for="column in [...State.columns, ...props.columns]"
@@ -29,7 +36,9 @@
             :reserve-selection="column.reserveselection"
             :selectable="props.selectable"
           >
-            dd
+            <template v-if="column.scopedSlots" #default="scope">
+              <slot v-bind="scope" :name="column.scopedSlots.customRender" />
+            </template>
           </el-table-column>
         </template>
       </el-table>
@@ -55,10 +64,15 @@ import type {
 } from 'element-plus/es/components/table/src/table-column/defaults';
 import './index.scss';
 import { MColumnItemType, MokoTableStateTypes } from './type';
-import { MoneyThousandFormatter, ThousandFormatter } from 'ecstasy-tools';
+import {
+  MathTool,
+  MoneyThousandFormatter,
+  ThousandFormatter,
+} from 'ecstasy-tools';
 
 interface Props {
   aroundBorder?: boolean;
+  grayHeader?: boolean;
   size?: 'small' | 'default' | 'large';
   pagination?: boolean;
   columns: Array<MColumnItemType>;
@@ -67,10 +81,13 @@ interface Props {
   loadData?: Array<any>;
   lazyLoad?: boolean;
   preload?: boolean;
+  showSummary?: boolean;
+  sumArry?: Array<string>;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   aroundBorder: false,
+  grayHeader: true,
   size: 'default',
   pagination: true,
   selectable: (row: any) => true,
@@ -78,6 +95,8 @@ const props = withDefaults(defineProps<Props>(), {
   loadData: () => [],
   lazyLoad: false,
   preload: true,
+  showSummary: false,
+  sumArry: undefined,
 });
 
 const State = reactive<MokoTableStateTypes>({
@@ -116,7 +135,30 @@ onMounted(() => {
   props.lazyLoad && props.preload && getData();
 });
 const onCurrentChange = (current: number) => getData(current);
-
+interface SummaryMethodProps<T = any> {
+  columns: TableColumnCtx<T>[];
+  data: T[];
+}
+const getSummaries = (param: SummaryMethodProps) => {
+  const { columns, data } = param;
+  const sums: Array<string> = [];
+  columns.forEach((column, index) => {
+    if (index === 0) {
+      return (sums[index] = '合计：');
+    }
+    const values = data.map((item) => Number(item[column.property]));
+    if (props.sumArry.includes(column.property)) {
+      let sum_index_value = 0;
+      values.map((value) => {
+        sum_index_value = MathTool.add(sum_index_value, value);
+      });
+      sums[index] = `${sum_index_value}`;
+    } else {
+      sums[index] = '';
+    }
+  });
+  return sums;
+};
 // 金额格式化
 const MoneyFormatter = (
   row: TableColumn<MColumnItemType>,
@@ -155,3 +197,17 @@ const SelectFormatter = (
   if (!cellValue) return formatterStr;
 };
 </script>
+
+<style lang="scss" scoped>
+.moko-table {
+  &-content {
+    font-size: 13px;
+
+    &.gray-header {
+      :deep(tr th) {
+        background-color: #f5f7fa !important;
+      }
+    }
+  }
+}
+</style>
