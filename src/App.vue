@@ -198,9 +198,11 @@ const onClick = ({ component, name }: ComponentItemType) => {
       }
 
       &.mo-logo {
+        -webkit-perspective: 1000;
         .logo {
           width: 100%;
           height: 100%;
+          animation: myfirst 10s linear 1ms 100;
 
           &:hover {
             filter: drop-shadow(0 0 2em #646cffaa);
@@ -208,6 +210,28 @@ const onClick = ({ component, name }: ComponentItemType) => {
         }
       }
     }
+  }
+}
+
+@keyframes myfirst {
+  0% {
+    transform: rotatey(0deg);
+  }
+
+  25% {
+    transform: rotatey(90deg);
+  }
+
+  50% {
+    transform: rotatey(180deg);
+  }
+
+  75% {
+    transform: rotatey(270deg);
+  }
+
+  100% {
+    transform: rotatey(360deg);
   }
 }
 </style>
