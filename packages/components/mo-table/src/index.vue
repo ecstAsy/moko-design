@@ -1,14 +1,19 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-11 15:11:17
- * @LastEditTime: 2022-10-17 13:12:18
+ * @LastEditTime: 2022-10-21 10:12:02
  * @LastEditors: ecstAsy
 -->
 
 <template>
   <el-row class="moko-table">
     <el-col>
-      <el-table :size="props.size">
+      <el-table
+        :size="props.size"
+        v-loading="State.loading"
+        fit
+        :data="props.lazyLoad ? State.dataSource : props.loadData"
+      >
         <template
           v-for="column in [...State.columns, ...props.columns]"
           :key="column.key"
@@ -43,7 +48,7 @@
 </template>
 
 <script setup lang="ts" name="MoTable">
-import { reactive } from 'vue';
+import { reactive, onMounted } from 'vue';
 import type {
   TableColumnCtx,
   TableColumn,
@@ -58,6 +63,10 @@ interface Props {
   pagination?: boolean;
   columns: Array<MColumnItemType>;
   selectable?: boolean;
+  load?: (params?: any) => any;
+  loadData?: Array<any>;
+  lazyLoad?: boolean;
+  preload?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -65,9 +74,14 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'default',
   pagination: true,
   selectable: false,
+  load: () => null,
+  loadData: () => [],
+  lazyLoad: false,
+  preload: true,
 });
 
 const State = reactive<MokoTableStateTypes>({
+  loading: false,
   columns: [],
   dataSource: [],
   pagination: {
@@ -77,7 +91,31 @@ const State = reactive<MokoTableStateTypes>({
   },
 });
 
-const onCurrentChange = () => {};
+const getData = async (current = 1) => {
+  try {
+    State.loading = true;
+    const res: any = await props.load({
+      current,
+      pageSize: 10,
+    });
+    // fields 自定义 header 项
+    const { data, pageSize, total, currentPage } = res.data;
+    State.dataSource = data;
+    State.pagination = {
+      ...State.pagination,
+      total,
+      currentPage,
+      pageSize,
+    };
+  } catch (error) {
+    return (State.loading = false);
+  }
+};
+onMounted(() => {
+  // 如果懒加载 并且 需要预加载
+  props.lazyLoad && props.preload && getData();
+});
+const onCurrentChange = (current: number) => getData(current);
 
 // 金额格式化
 const MoneyFormatter = (

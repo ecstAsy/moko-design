@@ -1,7 +1,7 @@
 /*
  * @Author: ecstAsy
  * @Date: 2022-10-11 15:32:56
- * @LastEditTime: 2022-10-11 16:04:02
+ * @LastEditTime: 2022-10-21 09:53:17
  * @LastEditors: ecstAsy
  */
 
@@ -42,6 +42,7 @@ export interface SumMapTypes {
 }
 
 export interface MokoTableStateTypes {
+  loading: boolean;
   columns: Array<MColumnItemType>;
   dataSource: Array<any>;
   pagination: PaginationTypes;

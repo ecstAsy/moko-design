@@ -1,7 +1,7 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-13 15:54:48
- * @LastEditTime: 2022-10-14 14:11:18
+ * @LastEditTime: 2022-10-21 10:05:00
  * @LastEditors: ecstAsy
 -->
 
@@ -11,6 +11,7 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
+import { tableDatas } from './data-source';
 
 const tableProps = reactive({
   columns: [
@@ -45,35 +46,7 @@ const tableProps = reactive({
       dataIndex: 'action',
     },
   ],
-  loadData: [
-    {
-      id: 1,
-      age: 18,
-      name: 'Tom',
-      sex: '女',
-      address: 'No. 189, Grove St, Los Angeles',
-    },
-    {
-      id: 2,
-      age: 18,
-      name: 'Tom',
-      sex: '女',
-      address: 'No. 189, Grove St, Los Angeles',
-    },
-    {
-      id: 3,
-      age: 18,
-      name: 'Tom',
-      sex: '女',
-      address: 'No. 189, Grove St, Los Angeles',
-    },
-    {
-      id: 4,
-      age: 18,
-      name: 'Tom',
-      sex: '女',
-      address: 'No. 189, Grove St, Los Angeles',
-    },
-  ],
+  loadData: tableDatas,
+  lazyLoad: false,
 });
 </script>
