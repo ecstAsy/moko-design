@@ -1,7 +1,7 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-11 15:11:17
- * @LastEditTime: 2022-10-21 11:07:59
+ * @LastEditTime: 2022-10-21 11:29:04
  * @LastEditors: ecstAsy
 -->
 
@@ -200,12 +200,33 @@ const SelectFormatter = (
 
 <style lang="scss" scoped>
 .moko-table {
+  &.border {
+    border: 1px solid #eaebee;
+  }
   &-content {
     font-size: 13px;
+    width: 100%;
 
     &.gray-header {
       :deep(tr th) {
         background-color: #f5f7fa !important;
+      }
+    }
+
+    :deep(.el-scrollbar__bar) {
+      &.is-horizontal {
+        height: 10px;
+        border-radius: 0 !important;
+        background-color: #e4e7ed;
+        opacity: 0.5;
+      }
+
+      &.is-vertical {
+        background-color: transparent;
+      }
+
+      .el-scrollbar__thumb {
+        border-radius: 0 !important;
       }
     }
   }
