@@ -1,14 +1,9 @@
 /*
  * @Author: ecstAsy
  * @Date: 2022-10-11 15:32:56
- * @LastEditTime: 2022-10-21 09:53:17
+ * @LastEditTime: 2022-10-21 16:07:18
  * @LastEditors: ecstAsy
  */
-
-interface ScopedSlots {
-  customRender: string;
-}
-
 export interface OptionItemType {
   label: string;
   value: string | number;
@@ -18,7 +13,7 @@ export interface MColumnItemType {
   title?: string;
   dataIndex?: string;
   align?: 'left' | 'center' | 'right';
-  scopedSlots?: ScopedSlots | any;
+  render?: string;
   fixed?: string;
   width?: number;
   children?: Array<MColumnItemType>;

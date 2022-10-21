@@ -1,12 +1,17 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-13 15:54:48
- * @LastEditTime: 2022-10-21 10:05:00
+ * @LastEditTime: 2022-10-21 16:10:22
  * @LastEditors: ecstAsy
 -->
 
 <template>
-  <mo-table v-bind="tableProps" />
+  <mo-table v-bind="tableProps">
+    <template #action>
+      <el-button link type="primary"> edit </el-button>
+      <el-button link type="danger"> delete </el-button>
+    </template>
+  </mo-table>
 </template>
 
 <script setup lang="ts">
@@ -43,7 +48,7 @@ const tableProps = reactive({
     {
       key: 'action',
       title: '操作',
-      dataIndex: 'action',
+      render: 'action',
     },
   ],
   loadData: tableDatas,

@@ -1,7 +1,7 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-11 15:11:17
- * @LastEditTime: 2022-10-21 13:34:49
+ * @LastEditTime: 2022-10-21 16:09:42
  * @LastEditors: ecstAsy
 -->
 
@@ -38,8 +38,8 @@
               )
             "
           >
-            <template v-if="column.scopedSlots" #default="scope">
-              <slot v-bind="scope" :name="column.scopedSlots.customRender" />
+            <template v-if="column.render" #default="scope">
+              <slot v-bind="scope" :name="column.render" />
             </template>
           </el-table-column>
         </template>
@@ -47,7 +47,6 @@
     </el-col>
     <el-col v-if="props.pagination">
       <el-pagination
-        style="margin: 24px auto"
         :size="props.size"
         background
         layout="prev, pager, next, jumper"
@@ -261,6 +260,11 @@ const getTableClass = computed(() => () => {
         border-radius: 0 !important;
       }
     }
+  }
+
+  .el-pagination {
+    margin: 16px auto;
+    justify-content: center;
   }
 }
 </style>
