@@ -1,15 +1,15 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-13 15:54:48
- * @LastEditTime: 2022-10-21 16:10:22
+ * @LastEditTime: 2022-10-24 13:18:41
  * @LastEditors: ecstAsy
 -->
 
 <template>
   <mo-table v-bind="tableProps">
     <template #action>
-      <el-button link type="primary"> edit </el-button>
-      <el-button link type="danger"> delete </el-button>
+      <el-button link type="primary"> 编辑 </el-button>
+      <el-button link type="danger"> 删除 </el-button>
     </template>
   </mo-table>
 </template>

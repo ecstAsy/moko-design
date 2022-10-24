@@ -1,7 +1,7 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-11 15:11:17
- * @LastEditTime: 2022-10-21 16:09:42
+ * @LastEditTime: 2022-10-24 13:16:54
  * @LastEditors: ecstAsy
 -->
 
@@ -9,13 +9,19 @@
   <el-row class="moko-table">
     <el-col>
       <el-table
-        :size="props.size"
-        v-loading="State.loading"
+        ref="mokotable"
         fit
+        v-loading="State.loading"
+        :class="getTableClass()"
+        :row-key="props.rowKey"
+        :size="props.size"
+        :max-height="props.maxHeight"
         :data="props.lazyLoad ? State.dataSource : props.loadData"
         :show-summary="props.showSummary"
-        :class="getTableClass()"
         :summary-method="getSummaries"
+        :row-class-name="props.rowClassName"
+        :default-expand-all="props.defaultExpandAll"
+        @selection-change="handleSelectionChange"
       >
         <template
           v-for="column in [...State.columns, ...props.columns]"
@@ -58,11 +64,12 @@
 </template>
 
 <script setup lang="ts" name="MoTable">
-import { reactive, computed, onMounted } from 'vue';
+import { ref, reactive, computed, onMounted } from 'vue';
 import type {
   TableColumnCtx,
   TableColumn,
 } from 'element-plus/es/components/table/src/table-column/defaults';
+import type { ElTable } from 'element-plus';
 import './index.scss';
 import { MColumnItemType, MokoTableStateTypes } from './type';
 import {
@@ -71,13 +78,17 @@ import {
   ThousandFormatter,
 } from 'ecstasy-tools';
 
+const mokotable = ref<InstanceType<typeof ElTable>>();
 interface Props {
   aroundBorder?: boolean;
   grayHeader?: boolean;
   size?: 'small' | 'default' | 'large';
+  rowKey?: string;
+  maxHeight?: any;
   pagination?: boolean;
   columns: Array<MColumnItemType>;
   selectable?: (row: any) => boolean;
+  rowClassName?: (row: any) => string;
   load?: (params?: any) => any;
   loadData?: Array<any>;
   lazyLoad?: boolean;
@@ -85,14 +96,18 @@ interface Props {
   showSummary?: boolean;
   sumArry?: Array<string>;
   formatter?: boolean;
+  defaultExpandAll?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   aroundBorder: false,
   grayHeader: true,
   size: 'default',
+  rowKey: 'id',
+  maxHeight: 1800,
   pagination: true,
   selectable: (row: any) => true,
+  rowClassName: (row: any) => '',
   load: () => null,
   loadData: () => [],
   lazyLoad: false,
@@ -100,7 +115,14 @@ const props = withDefaults(defineProps<Props>(), {
   showSummary: false,
   sumArry: undefined,
   formatter: true,
+  defaultExpandAll: false,
 });
+
+interface Emits {
+  (e: 'selection', val: Array<any>): void;
+}
+
+const emit = defineEmits<Emits>();
 
 const State = reactive<MokoTableStateTypes>({
   loading: false,
@@ -138,6 +160,10 @@ onMounted(() => {
   props.lazyLoad && props.preload && getData();
 });
 const onCurrentChange = (current: number) => getData(current);
+// 选择
+const handleSelectionChange = (val: Array<any>) => {
+  emit('selection', val);
+};
 
 // 列表求和方法
 interface SummaryMethodProps<T = any> {
@@ -226,6 +252,25 @@ const getTableClass = computed(() => () => {
     classStr += ' gray-header';
   }
   return classStr;
+});
+
+const refresh = (keepAlive: boolean = false) => {
+  const { currentPage } = State.pagination;
+  return getData(!keepAlive ? 1 : currentPage);
+};
+
+const toggleSelection = (rows?: Array<any>) => {
+  mokotable.value!.clearSelection();
+  if (rows) {
+    rows.forEach((row) => {
+      mokotable.value!.toggleRowSelection(row, true);
+    });
+  }
+};
+defineExpose({
+  mokotable,
+  refresh,
+  toggleSelection,
 });
 </script>
 
