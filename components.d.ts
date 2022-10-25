@@ -18,6 +18,7 @@ declare module '@vue/runtime-core' {
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     MoButton: typeof import('./src/components/demos/mo-button.vue')['default']
+    MoFileinfo: typeof import('./src/components/demos/mo-fileinfo.vue')['default']
     MoIcon: typeof import('./src/components/demos/mo-icon.vue')['default']
     MoSvg: typeof import('./src/components/demos/mo-svg.vue')['default']
     MoTable: typeof import('./src/components/demos/mo-table.vue')['default']

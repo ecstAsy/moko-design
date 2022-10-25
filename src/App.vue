@@ -76,12 +76,12 @@ const State = reactive<{
       component: '',
     },
     {
-      name: '按钮',
+      name: '上传文件',
       component: 'mo-button',
     },
     {
-      name: '按钮',
-      component: 'mo-button',
+      name: '文件列表',
+      component: 'mo-fileinfo',
     },
     {
       name: '按钮',
