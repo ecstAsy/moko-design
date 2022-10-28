@@ -1,7 +1,7 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-27 15:39:07
- * @LastEditTime: 2022-10-27 15:40:18
+ * @LastEditTime: 2022-10-28 10:47:21
  * @LastEditors: ecstAsy
 -->
 
@@ -11,7 +11,7 @@
   </span>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="MoUpload">
 import { reactive, ref, watch } from 'vue';
 import type { ButtonType } from 'element-plus/es/components/button/src/button';
 import type { UploadFile } from 'element-plus';

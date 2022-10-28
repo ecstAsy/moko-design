@@ -1,12 +1,12 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-25 13:49:29
- * @LastEditTime: 2022-10-25 14:17:13
+ * @LastEditTime: 2022-10-28 10:48:55
  * @LastEditors: ecstAsy
 -->
 
 <template>
-  <moko-file-info :files="files" />
+  <mo-file-info :files="files" />
 </template>
 
 <script setup lang="ts">

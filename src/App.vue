@@ -77,7 +77,7 @@ const State = reactive<{
     },
     {
       name: '上传文件',
-      component: 'mo-button',
+      component: 'mo-upload',
     },
     {
       name: '文件列表',

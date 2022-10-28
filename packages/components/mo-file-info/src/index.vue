@@ -1,7 +1,7 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-24 13:30:42
- * @LastEditTime: 2022-10-25 15:27:48
+ * @LastEditTime: 2022-10-28 10:48:35
  * @LastEditors: ecstAsy
 -->
 
@@ -31,7 +31,7 @@
   </ul>
 </template>
 
-<script setup lang="ts" name="MokoFileInfo">
+<script setup lang="ts" name="MoFileInfo">
 import { MFileItemInfo } from '../type';
 import MokoIcon from '../../mo-icon';
 import { BlobExport } from 'ecstasy-tools';
