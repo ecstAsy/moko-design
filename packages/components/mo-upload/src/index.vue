@@ -1,13 +1,13 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-27 15:39:07
- * @LastEditTime: 2022-10-28 10:47:21
+ * @LastEditTime: 2022-10-31 13:29:21
  * @LastEditors: ecstAsy
 -->
 
 <template>
   <span>
-    <el-upload>dd</el-upload>
+    <el-upload ref="upload" class="moko-upload">dd</el-upload>
   </span>
 </template>
 
@@ -45,6 +45,11 @@ interface Props {
   limit?: number;
   multiple?: boolean;
   batchDownload?: boolean;
+  config: {
+    limit?: number;
+    multiple?: boolean;
+    action: string;
+  };
 }
 
 const props = withDefaults(defineProps<Props>(), {
