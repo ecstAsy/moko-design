@@ -1,7 +1,7 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-11 15:54:56
- * @LastEditTime: 2022-10-28 10:51:13
+ * @LastEditTime: 2022-10-31 16:29:21
  * @LastEditors: ecstAsy
 -->
 
@@ -27,6 +27,7 @@ import {
   motable,
   moupload,
   mofileinfo,
+  motooltip,
 } from './demos';
 
 interface Props {
@@ -59,6 +60,7 @@ const getComIs = computed(() => {
     'mo-table': motable,
     'mo-upload': moupload,
     'mo-fileinfo': mofileinfo,
+    'mo-tooltip': motooltip,
   };
   return () => ComMaps[props.component!];
 });

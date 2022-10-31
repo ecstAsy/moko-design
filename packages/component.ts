@@ -1,7 +1,7 @@
 /*
  * @Author: ecstAsy
  * @Date: 2022-10-02 14:01:05
- * @LastEditTime: 2022-10-28 10:48:47
+ * @LastEditTime: 2022-10-31 15:51:38
  * @LastEditors: ecstAsy
  */
 import MoDialog from './components/mo-dialog';
@@ -13,6 +13,7 @@ import MoIcon from './components/mo-icon';
 import MoSvg from './components/mo-svg';
 import MoUpload from './components/mo-upload';
 import MoFileInfo from './components/mo-file-info';
+import MoTooltip from './components/mo-tooltip';
 
 export const components = {
   MoDialog,
@@ -22,6 +23,7 @@ export const components = {
   MoSvg,
   MoUpload,
   MoFileInfo,
+  MoTooltip,
 };
 
 export default Object.values(components);

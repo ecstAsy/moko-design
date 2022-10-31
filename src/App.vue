@@ -84,8 +84,8 @@ const State = reactive<{
       component: 'mo-fileinfo',
     },
     {
-      name: '按钮',
-      component: 'mo-button',
+      name: 'Tooltip提示',
+      component: 'mo-tooltip',
     },
     {
       name: '按钮',

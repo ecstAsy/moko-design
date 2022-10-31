@@ -1,7 +1,7 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-31 15:35:56
- * @LastEditTime: 2022-10-31 15:35:59
+ * @LastEditTime: 2022-10-31 16:37:07
  * @LastEditors: ecstAsy
 -->
 
@@ -17,7 +17,7 @@
           <span class="content">{{ props.tooltipContent }}</span>
         </div>
       </template>
-      <moko-icon
+      <mo-icon
         class="tooltip-icon"
         :icon="props.tooltipIcon"
         :style="{
@@ -25,11 +25,12 @@
         }"
       />
     </el-tooltip>
-    <span>{{ props.minxinText }}</span>
+    <span class="minxin-text">{{ props.minxinText }}</span>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="MoTooltip">
+import MoIcon from '../../mo-icon';
 interface Props {
   tooltipEffect?: string;
   tooltipPlacement?: string;
@@ -51,8 +52,12 @@ const props = withDefaults(defineProps<Props>(), {
 
 <style lang="scss" scoped>
 @import '@/styles/index.scss';
-.tc-mixin-tooltip {
+.moko-tooltip {
   @include flex-row(flex-start);
+
+  .minxin-text {
+    margin-left: 6px;
+  }
 }
 .auto-tooltip-content {
   @include flex-column(flex-start, flex-start);

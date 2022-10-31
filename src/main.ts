@@ -4,6 +4,7 @@ import './style.css';
 import App from './App.vue';
 import MokoDesign from '../packages/index';
 import '@/assets/font';
+import '@/styles/index.scss';
 
 const app = createApp(App);
 
