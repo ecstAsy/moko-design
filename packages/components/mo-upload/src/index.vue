@@ -1,22 +1,65 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-10-27 15:39:07
- * @LastEditTime: 2022-10-31 13:29:21
+ * @LastEditTime: 2022-11-01 11:40:03
  * @LastEditors: ecstAsy
 -->
 
 <template>
   <span>
-    <el-upload ref="upload" class="moko-upload">dd</el-upload>
+    <el-upload
+      ref="upload"
+      class="moko-upload"
+      :action="props.uploadUrl"
+      :headers="props.headers"
+      :limit="props.limit"
+      :multiple="props.multiple"
+      :show-file-list="props.showFileList"
+      :file-list="fileLists"
+      :on-error="uploadError"
+      :on-success="uploadSuccess"
+      :on-exceed="uploadExceed"
+    >
+      <slot name="content">
+        <el-button :type="props.btnType">
+          {{ props.btnText }}
+        </el-button>
+      </slot>
+      <template #tip>
+        <div v-if="props.tipText" class="el-upload__tip">
+          {{ props.tipText }}
+        </div>
+      </template>
+      <template #file="{ file }">
+        <div class="file-list-item">
+          <span class="file-list-item-name">
+            {{ file.name }}
+          </span>
+          <span class="file-list-item-action">
+            <mo-icon icon="Close" @click="onRemove(file)" />
+            <mo-icon icon="Download" @click="onDownload(file)" />
+          </span>
+        </div>
+      </template>
+    </el-upload>
+    <el-button
+      v-if="fileLists.length > 1 && props.batchDownload"
+      size="small"
+      type="primary"
+      @click="onBattch"
+    >
+      批量下载
+    </el-button>
   </span>
 </template>
 
 <script setup lang="ts" name="MoUpload">
-import { reactive, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import type { ButtonType } from 'element-plus/es/components/button/src/button';
 import type { UploadFile } from 'element-plus';
 import { ElMessage } from 'element-plus';
 import { BlobExport } from 'ecstasy-tools';
+import MoIcon from '../../mo-icon';
 
 const upload = ref();
 const filtersFileList = (arr: any[]) => {
@@ -44,12 +87,10 @@ interface Props {
   tipText?: string;
   limit?: number;
   multiple?: boolean;
+  showFileList?: boolean;
   batchDownload?: boolean;
-  config: {
-    limit?: number;
-    multiple?: boolean;
-    action: string;
-  };
+  uploadUrl: string;
+  headers?: any;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -59,6 +100,8 @@ const props = withDefaults(defineProps<Props>(), {
   limit: 1,
   multiple: false,
   batchDownload: false,
+  showFileList: true,
+  headers: {},
 });
 
 interface Emits {
@@ -131,3 +174,52 @@ const onBattch = () => {
   fileLists.value.map((item) => onDownload(item));
 };
 </script>
+
+<style lang="scss" scoped>
+@import '@/styles/index.scss';
+.moko-upload {
+  :deep(.el-upload-list__item .el-upload-list__item-info) {
+    width: 95%;
+    margin: 0;
+  }
+
+  :deep(.el-upload-list__item-name) {
+    white-space: pre-line;
+    text-align: left;
+  }
+}
+
+.file-list-item {
+  width: 100%;
+  @include flex-row();
+  line-height: 32px;
+  transition: all 0.5s;
+
+  &-name {
+    padding-left: 8px;
+    color: $primary-hover-color;
+    cursor: pointer;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+  &-action {
+    min-width: 50px;
+    align-self: start;
+    height: 100%;
+    margin-left: 16px;
+    color: $font-color-info;
+    font-weight: 800;
+    padding-top: 4px;
+
+    * {
+      cursor: pointer;
+      font-size: 16px;
+      margin-right: 8px;
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+}
+</style>
