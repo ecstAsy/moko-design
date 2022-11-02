@@ -18,7 +18,6 @@ declare module '@vue/runtime-core' {
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     ElUpload: typeof import('element-plus/es')['ElUpload']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     MoButton: typeof import('./src/components/demos/mo-button.vue')['default']
     MoFileinfo: typeof import('./src/components/demos/mo-fileinfo.vue')['default']
     MoIcon: typeof import('./src/components/demos/mo-icon.vue')['default']
@@ -26,8 +25,6 @@ declare module '@vue/runtime-core' {
     MoTable: typeof import('./src/components/demos/mo-table.vue')['default']
     MoTooltip: typeof import('./src/components/demos/mo-tooltip.vue')['default']
     MoUpload: typeof import('./src/components/demos/mo-upload.vue')['default']
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']
