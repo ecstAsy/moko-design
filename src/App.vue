@@ -88,8 +88,8 @@ const State = reactive<{
       component: 'mo-tooltip',
     },
     {
-      name: '按钮',
-      component: 'mo-button',
+      name: '组织架构选择',
+      component: 'mo-organization-structure',
     },
     {
       name: '按钮',
