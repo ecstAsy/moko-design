@@ -1,7 +1,7 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-11-30 10:41:36
- * @LastEditTime: 2022-11-30 17:59:53
+ * @LastEditTime: 2022-12-02 09:37:54
  * @LastEditors: ecstAsy
 -->
 <template>
@@ -10,7 +10,12 @@
     <mo-dialog v-bind="State.dialogProps" @cancel="onClose">
       <div class="organization-structure-content">
         <div class="organization-structure-content-left">
-          <el-input clearable suffix-icon="Search" placeholder="请输入用户名" />
+          <el-input
+            clearable
+            suffix-icon="Search"
+            v-model="State.keyword"
+            placeholder="请输入用户名"
+          />
           <el-scrollbar height="400px">
             <ul class="selected-user">
               <li class="selected-user-item" v-for="item in 100">
@@ -20,14 +25,24 @@
             </ul>
           </el-scrollbar>
         </div>
-        <div class="organization-structure-content-right">right</div>
+        <div class="organization-structure-content-right">
+          <div class="structure-title">{{ getSelectToastTitle() }}</div>
+          <el-scrollbar height="400px">
+            <div class="structure-content">
+              <li class="selected-user-item" v-for="item in 100">
+                <span>王老吉</span>
+                <moko-icon icon="Delete" class="delete-icon" />
+              </li>
+            </div>
+          </el-scrollbar>
+        </div>
       </div>
     </mo-dialog>
   </span>
 </template>
 
 <script setup lang="ts" name="MoOrganizationStructure">
-import { reactive } from 'vue';
+import { reactive, computed } from 'vue';
 import MoDialog from '../../mo-dialog';
 import MokoIcon from '../../mo-icon';
 
@@ -50,6 +65,20 @@ const State = reactive<{
     destroyOnClose: true,
     appendToBody: true,
   },
+});
+const getSelectToastTitle = computed(() => () => {
+  const selectTypeMaps: {
+    [prop: string]: string;
+  } = {
+    company: '公司',
+    dep: '部门',
+    user: '人员',
+  };
+  let arr: Array<string> = [];
+  props.selectTypes.map((item) => {
+    arr = [...arr, selectTypeMaps[item]!];
+  });
+  return `选择${arr.join('、')}`;
 });
 const onChoose = () => {
   State.dialogProps = {
@@ -101,7 +130,18 @@ const onClose = () => {
       flex: 1;
       border: 1px solid #ccc;
       border-radius: 6px;
-      padding: 8px;
+      overflow: hidden;
+      .structure-title {
+        width: 100%;
+        background-color: #cacaca;
+        height: 32px;
+        color: $font-color-primary;
+        @include flex-row(center);
+      }
+
+      .structure-content {
+        padding: 8px;
+      }
     }
   }
 }
