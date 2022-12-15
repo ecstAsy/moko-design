@@ -1,7 +1,7 @@
 <!--
  * @Author: ecstAsy
  * @Date: 2022-11-01 11:41:31
- * @LastEditTime: 2022-11-01 13:18:01
+ * @LastEditTime: 2022-12-15 11:09:33
  * @LastEditors: ecstAsy
 -->
 <template>
@@ -12,3 +12,5 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts"></script>

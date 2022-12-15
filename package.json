@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@antv/x6": "^2.0.8",
     "@element-plus/icons-vue": "^2.0.10",
     "ecstasy-tools": "^1.0.3",
     "element-plus": "^2.2.17",

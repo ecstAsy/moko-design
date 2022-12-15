@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@antv/x6': ^2.0.8
   '@element-plus/icons-vue': ^2.0.10
   '@types/node': ^18.11.3
   '@typescript-eslint/eslint-plugin': ^5.0.0
@@ -31,6 +32,7 @@ specifiers:
   vue-tsc: ^0.40.4
 
 dependencies:
+  '@antv/x6': 2.0.8
   '@element-plus/icons-vue': 2.0.10_vue@3.2.40
   ecstasy-tools: 1.0.3
   element-plus: 2.2.17_vue@3.2.40
@@ -67,6 +69,25 @@ packages:
   /@antfu/utils/0.5.2:
     resolution: {integrity: sha512-CQkeV+oJxUazwjlHD0/3ZD08QWKuGQkhnrKo3e6ly5pd48VUpXbb77q0xMU4+vc2CkJnDS02Eq/M9ugyX20XZA==}
     dev: true
+
+  /@antv/x6-common/2.0.3:
+    resolution: {integrity: sha512-O153MhI3wGkgbV0w8PAftCRk2t+U+ynXldDZwieSIa0mG9FSzU0NFshDhmVpxo6iTTWjvz3fzLlPR02ASRZJPg==}
+    dependencies:
+      lodash-es: 4.17.21
+      utility-types: 3.10.0
+    dev: false
+
+  /@antv/x6-geometry/2.0.4:
+    resolution: {integrity: sha512-dlsLNRRTiCw8TsJ/03j3y5IbbbK4Npf6zBH6kAx8nnW+edNT/TAOChvPRzizwD+vA7wY9Rp2AiRnp/vCdIYC5w==}
+    dev: false
+
+  /@antv/x6/2.0.8:
+    resolution: {integrity: sha512-Y7ByFlwaRcvWYClXS+ExiL3MxYHslRqMS3sTj31LGV0SN3L0sCz2j6zfGXjpr4AfVB9iPp18NgJtVkLtxNHJDQ==}
+    dependencies:
+      '@antv/x6-common': 2.0.3
+      '@antv/x6-geometry': 2.0.4
+      utility-types: 3.10.0
+    dev: false
 
   /@babel/code-frame/7.18.6:
     resolution: {integrity: sha512-TDCmlK5eOvH+eH7cdAFlNXeVJqWIQ7gW9tY1GJIpUtFb6CmjVyq2VM3u71bOyR8CRihcCgMUYoDNyLXao3+70Q==}
@@ -3138,6 +3159,11 @@ packages:
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
+
+  /utility-types/3.10.0:
+    resolution: {integrity: sha512-O11mqxmi7wMKCo6HKFt5AhO4BwY3VV68YU07tgxfz8zJTIxr4BpsezN49Ffwy9j3ZpwwJp4fkRwjRzq3uWE6Rg==}
+    engines: {node: '>= 4'}
+    dev: false
 
   /v8-compile-cache/2.3.0:
     resolution: {integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==}
